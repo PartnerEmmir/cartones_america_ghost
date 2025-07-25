@@ -13,3 +13,40 @@
 @import "blog/single.css";
 @import "blog/author.css";
 @import "misc/utilities.css";
+
+
+
+body.page-landing-test .resaltar {
+  color: red;
+  font-weight: bold;
+}
+
+/* Estilo para la alerta pequeña */
+.swal2-popup.small {
+  width: 200px !important;
+  font-size: 14px;
+}
+
+/* Estilo para la alerta mediana (tamaño predeterminado) */
+.swal2-popup.medium {
+  width: 400px !important;
+  font-size: 16px;
+}
+
+/* Estilo para la alerta grande */
+.swal2-popup.large {
+  width: 600px !important;
+  font-size: 18px;
+}
+
+/* Estilo para la alerta extra-grande */
+.swal2-popup.extra-large {
+  width: 800px !important;
+  font-size: 20px;
+}
+
+/* Estilo para la alerta extra-extra-grande */
+.swal2-popup.extra-extra-large {
+  width: 1000px !important;
+  font-size: 22px;
+}

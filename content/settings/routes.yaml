@@ -1,8 +1,14 @@
 routes:
+  /rss/:
+    template: rss
+    content_type: text/xml
+
+  /:
+    template: landing
 
 collections:
-  /:
-    permalink: /{slug}/
+  /blog/:
+    permalink: /blog/{slug}/
     template: index
 
 taxonomies:

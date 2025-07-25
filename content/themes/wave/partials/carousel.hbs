@@ -1,0 +1,57 @@
+{{!-- partials/carousel.hbs --}}
+{{#if @custom.imagen_carrusel_1}}
+<section class="home-carousel">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {{!-- Slide 1 --}}
+      {{#if @custom.imagen_carrusel_1}}
+      <div class="swiper-slide">
+        {{#if @custom.banner_link_url_1}}<a href="{{@custom.banner_link_url_1}}">{{/if}}
+          <picture>
+            {{#if @custom.imagen_banner_mobile_1}}
+              <source media="(max-width: 767px)" srcset="{{img_url @custom.imagen_banner_mobile_1 '600x300'}}">
+            {{/if}}
+            <source media="(min-width: 768px)" srcset="{{img_url @custom.imagen_carrusel_1 '1200x400'}}">
+            <img src="{{img_url @custom.imagen_carrusel_1 '1200x400'}}" alt="Slide 1" width="1200" height="400" loading="lazy">
+          </picture>
+        {{#if @custom.banner_link_url_1}}</a>{{/if}}
+      </div>
+      {{/if}}
+
+      {{!-- Slide 2 --}}
+      {{#if @custom.imagen_carrusel_2}}
+      <div class="swiper-slide">
+        {{#if @custom.banner_link_url_2}}<a href="{{@custom.banner_link_url_2}}">{{/if}}
+          <picture>
+            {{#if @custom.imagen_banner_mobile_2}}
+              <source media="(max-width: 767px)" srcset="{{img_url @custom.imagen_banner_mobile_2 '600x300'}}">
+            {{/if}}
+            <source media="(min-width: 768px)" srcset="{{img_url @custom.imagen_carrusel_2 '1200x400'}}">
+            <img src="{{img_url @custom.imagen_carrusel_2 '1200x400'}}" alt="Slide 2" width="1200" height="400" loading="lazy">
+          </picture>
+        {{#if @custom.banner_link_url_2}}</a>{{/if}}
+      </div>
+      {{/if}}
+
+      {{!-- Slide 3 --}}
+      {{#if @custom.imagen_carrusel_3}}
+      <div class="swiper-slide">
+        {{#if @custom.banner_link_url_3}}<a href="{{@custom.banner_link_url_3}}">{{/if}}
+          <picture>
+            {{#if @custom.imagen_banner_mobile_3}}
+              <source media="(max-width: 767px)" srcset="{{img_url @custom.imagen_banner_mobile_3 '600x300'}}">
+            {{/if}}
+            <source media="(min-width: 768px)" srcset="{{img_url @custom.imagen_carrusel_3 '1200x400'}}">
+            <img src="{{img_url @custom.imagen_carrusel_3 '1200x400'}}" alt="Slide 3" width="1200" height="400" loading="lazy">
+          </picture>
+        {{#if @custom.banner_link_url_3}}</a>{{/if}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+{{/if}}

@@ -7,11 +7,11 @@
         "ghost": ">=5.0.0"
     },
     "license": "MIT",
-        "author": {
-            "name": "Ghost Foundation",
-            "email": "hello@ghost.org",
-            "url": "https://ghost.org"
-        },
+    "author": {
+        "name": "Ghost Foundation",
+        "email": "hello@ghost.org",
+        "url": "https://ghost.org"
+    },
     "keywords": [
         "ghost",
         "theme",
@@ -44,68 +44,126 @@
         "custom": {
             "navigation_layout": {
                 "type": "select",
-                "options": ["Logo on the left", "Logo in the middle", "Stacked"],
+                "options": [
+                    "Logo on the left",
+                    "Logo in the middle",
+                    "Stacked"
+                ],
                 "default": "Logo on the left"
             },
             "title_font": {
                 "type": "select",
-                "options": ["Modern sans-serif", "Elegant serif"],
+                "options": [
+                    "Modern sans-serif",
+                    "Elegant serif"
+                ],
                 "default": "Modern sans-serif"
             },
             "body_font": {
                 "type": "select",
-                "options": ["Modern sans-serif", "Elegant serif"],
+                "options": [
+                    "Modern sans-serif",
+                    "Elegant serif"
+                ],
                 "default": "Modern sans-serif"
-            },
-            "apple_podcasts_link": {
-                "type": "text",
-                "default": "https://podcasts.apple.com/"
-            },
-            "google_podcasts_link": {
-                "type": "text",
-                "default": "https://podcasts.google.com/"
-            },
-            "spotify_link": {
-                "type": "text",
-                "default": "https://open.spotify.com/"
-            },
-            "rss_link": {
-                "type": "text"
             },
             "imagen_carrusel_1": {
                 "type": "image",
-                "group": "Homepage",
+                "group": "Banners PC",
                 "help": "Primera imagen del carrusel"
             },
             "banner_link_url_1": {
                 "type": "text",
-                "group": "Homepage",
+                "group": "Banners PC",
                 "help": "Enlace del slider 1"
             },
             "imagen_carrusel_2": {
                 "type": "image",
-                "group": "Homepage",
+                "group": "Banners PC",
                 "help": "Segunda imagen del carrusel"
             },
             "banner_link_url_2": {
                 "type": "text",
-                "group": "Homepage",
+                "group": "Banners PC",
                 "help": "Enlace del slider 2"
             },
             "imagen_carrusel_3": {
                 "type": "image",
-                "group": "Homepage",
+                "group": "Banners PC",
                 "help": "Tercera imagen del carrusel"
             },
             "banner_link_url_3": {
                 "type": "text",
-                "group": "Homepage",
+                "group": "Banners PC",
                 "help": "Enlace del slider 3"
             },
-            "imagen_banner_mobile": {
+            "imagen_banner_mobile_1": {
                 "type": "image",
-                "group": "Homepage",
-                "help": "Banner que se mostrará en móviles"
+                "group": "Banners móviles",
+                "help": "Primera imagen del carrusel que se mostrará en móviles"
+            },
+            "banner_link_mobiles_url_1": {
+                "type": "text",
+                "group": "Banners móviles",
+                "help": "Enlace del slider 1 en móvil"
+            },
+            "imagen_banner_mobile_2": {
+                "type": "image",
+                "group": "Banners móviles",
+                "help": "Segunda imagen del carrusel que se mostrará en móviles"
+            },
+            "banner_link_mobiles_url_2": {
+                "type": "text",
+                "group": "Banners móviles",
+                "help": "Enlace del slider 2 en móvil"
+            },
+            "imagen_banner_mobile_3": {
+                "type": "image",
+                "group": "Banners móviles",
+                "help": "Tercera imagen del carrusel que se mostrará en móviles"
+            },
+            "banner_link_mobiles_url_3": {
+                "type": "text",
+                "group": "Banners móviles",
+                "help": "Enlace del slider 3 en móvil"
+            },
+            "mostrar_alerta": {
+                "type": "boolean",
+                "group": "Landing Page",
+                "default": false,
+                "help": "Mostrar alerta de bienvenida en el home"
+            },
+            "titulo_de_alerta": {
+                "type": "text",
+                "group": "Landing Page",
+                "default": "¡Bienvenido!",
+                "help": "Título de la alerta de bienvenida"
+            },
+            "texto_de_alerta": {
+                "type": "text",
+                "group": "Landing Page",
+                "default": "Gracias por visitar nuestro sitio",
+                "help": "Texto de la alerta de bienvenida"
+            },
+            "icono_alerta": {
+                "type": "select",
+                "options": ["success","info","warning","error"],
+                "group": "Landing Page",
+                "default": "info",
+                "help": "Icono de la alerta"
+            },
+            "lugar_alerta": {
+                "type": "select",
+                "options": ["top-end", "top-start", "top", "bottom-end", "bottom-start", "bottom","center", "center-start", "center-end"],
+                "group": "Landing Page",
+                "default": "top-end",
+                "help": "Es el lugar donde se mostrará la alerta"
+            },
+            "tamaño_de_la_alerta": {
+                "type": "text",
+                "group": "Landing Page",
+                "default": "500px",
+                "help": "Especifica el tamaño de la alerta en píxeles (ejemplo: 300px, 500px)"
             }
         }
     },
@@ -129,6 +187,8 @@
         "ordered-read-streams": "2.0.0",
         "postcss": "8.5.4",
         "postcss-easy-import": "4.0.0",
-        "pump": "3.0.2"
+        "pump": "3.0.2",
+        "sweetalert2": "^11.22.2",
+        "swiper": "^8.4.7"
     }
 }

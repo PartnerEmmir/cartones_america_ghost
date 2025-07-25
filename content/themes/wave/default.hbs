@@ -11,15 +11,17 @@
     {{{block "description"}}}
     {{/is}}
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+    <link rel="stylesheet" href="{{asset "css/swiper-bundle.min.css"}}">
+    <link rel="stylesheet" href="{{asset "css/sweetalert2.min.css"}}">
+
     {{ghost_head}}
 </head>
 
-<body class="{{body_class}}{{{block " body_class"}}} is-head-{{#match @custom.navigation_layout "Logo on the left"
+<body class="{{body_class}}{{{block "body_class"}}} is-head-{{#match @custom.navigation_layout "Logo on the left"
     }}left-logo{{else match @custom.navigation_layout "Logo in the middle"
     }}middle-logo{{else}}stacked{{/match}}{{#match @custom.title_font "=" "Elegant serif" }}
     has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif" }} has-serif-body{{/match}}">
     <div class="site">
-
         <header id="gh-head" class="gh-head gh-outer">
             <div class="gh-head-inner gh-inner">
                 <div class="gh-head-brand">
@@ -36,7 +38,6 @@
                         "icons/search"}}</button>
                     <button class="gh-burger" aria-label="Toggle menu"></button>
                 </div>
-
                 <nav class="gh-head-menu">
                     {{navigation}}
                     {{#unless @site.members_enabled}}
@@ -46,7 +47,6 @@
                     {{/match}}
                     {{/unless}}
                 </nav>
-
                 <div class="gh-head-actions">
                     {{#unless @site.members_enabled}}
                     {{^match @custom.navigation_layout "Stacked"}}
@@ -75,171 +75,191 @@
                 </div>
             </div>
         </header>
-
-{{#is "home"}}
-  {{#if @custom.imagen_carrusel_1}}
-    <section class="home-carousel">
-      <div class="swiper">
-        <div class="swiper-wrapper">
-
-          {{!-- Slide 1 --}}
+        {{#is "home"}}
           {{#if @custom.imagen_carrusel_1}}
-            <div class="swiper-slide">
-              {{#if @custom.banner_link_url_1}}
-                <a href="{{@custom.banner_link_url_1}}">
-              {{/if}}
+            <section class="home-carousel">
+              <div class="swiper">
+                <div class="swiper-wrapper">
 
-                <picture>
-                  {{#if @custom.imagen_banner_mobile}}
-                    <source
-                      media="(max-width: 767px)"
-                      srcset="{{img_url @custom.imagen_banner_mobile '600x300'}}"
-                    >
+                  {{!-- Slide 1 --}}
+                  {{#if @custom.imagen_carrusel_1}}
+                    <div class="swiper-slide">
+                      {{!-- Link wrapper: mobile primero, luego fallback a desktop --}}
+                      {{#if @custom.banner_link_mobiles_url_1}}
+                        <a href="{{@custom.banner_link_mobiles_url_1}}">
+                      {{else if @custom.banner_link_url_1}}
+                        <a href="{{@custom.banner_link_url_1}}">
+                      {{/if}}
+
+                        <picture>
+                          {{#if @custom.imagen_banner_mobile_1}}
+                            <source
+                              media="(max-width: 767px)"
+                              srcset="{{img_url @custom.imagen_banner_mobile_1 '600x300'}}"
+                            >
+                          {{/if}}
+                          <source
+                            media="(min-width: 768px)"
+                            srcset="{{img_url @custom.imagen_carrusel_1 '1200x400'}}"
+                          >
+                          <img
+                            src="{{img_url @custom.imagen_carrusel_1 '1200x400'}}"
+                            alt="Slide 1"
+                          >
+                        </picture>
+
+                      {{#if @custom.banner_link_mobiles_url_1}}
+                        </a>
+                      {{else if @custom.banner_link_url_1}}
+                        </a>
+                      {{/if}}
+                    </div>
                   {{/if}}
-                  <source
-                    media="(min-width: 768px)"
-                    srcset="{{img_url @custom.imagen_carrusel_1 '1200x400'}}"
-                  >
-                  <img
-                    src="{{img_url @custom.imagen_carrusel_1 '1200x400'}}"
-                    alt="Slide 1"
-                  >
-                </picture>
 
-              {{#if @custom.banner_link_url_1}}
-                </a>
-              {{/if}}
-            </div>
-          {{/if}}
+                  {{!-- Slide 2 --}}
+                  {{#if @custom.imagen_carrusel_2}}
+                    <div class="swiper-slide">
+                      {{!-- Link wrapper: mobile primero, luego fallback a desktop --}}
+                      {{#if @custom.banner_link_mobiles_url_2}}
+                        <a href="{{@custom.banner_link_mobiles_url_2}}">
+                      {{else if @custom.banner_link_url_2}}
+                        <a href="{{@custom.banner_link_url_2}}">
+                      {{/if}}
 
-          {{!-- Slide 2 --}}
-          {{#if @custom.imagen_carrusel_2}}
-            <div class="swiper-slide">
-              {{#if @custom.banner_link_url_2}}
-                <a href="{{@custom.banner_link_url_2}}">
-              {{/if}}
+                        <picture>
+                          {{#if @custom.imagen_banner_mobile_2}}
+                            <source
+                              media="(max-width: 767px)"
+                              srcset="{{img_url @custom.imagen_banner_mobile_2 '600x300'}}"
+                            >
+                          {{/if}}
+                          <source
+                            media="(min-width: 768px)"
+                            srcset="{{img_url @custom.imagen_carrusel_2 '1200x400'}}"
+                          >
+                          <img
+                            src="{{img_url @custom.imagen_carrusel_2 '1200x400'}}"
+                            alt="Slide 2"
+                          >
+                        </picture>
 
-                <picture>
-                  {{#if @custom.imagen_banner_mobile}}
-                    <source
-                      media="(max-width: 767px)"
-                      srcset="{{img_url @custom.imagen_banner_mobile '600x300'}}"
-                    >
+                      {{#if @custom.banner_link_url_2}}
+                        </a>
+                      {{/if}}
+                    </div>
                   {{/if}}
-                  <source
-                    media="(min-width: 768px)"
-                    srcset="{{img_url @custom.imagen_carrusel_2 '1200x400'}}"
-                  >
-                  <img
-                    src="{{img_url @custom.imagen_carrusel_2 '1200x400'}}"
-                    alt="Slide 2"
-                  >
-                </picture>
 
-              {{#if @custom.banner_link_url_2}}
-                </a>
-              {{/if}}
-            </div>
-          {{/if}}
+                  {{!-- Slide 3 --}}
+                  {{#if @custom.imagen_carrusel_3}}
+                    <div class="swiper-slide">
+                      {{!-- Link wrapper: mobile primero, luego fallback a desktop --}}
+                      {{#if @custom.banner_link_mobiles_url_3}}
+                        <a href="{{@custom.banner_link_mobiles_url_3}}">
+                      {{else if @custom.banner_link_url_3}}
+                        <a href="{{@custom.banner_link_url_3}}">
+                      {{/if}}
 
-          {{!-- Slide 3 --}}
-          {{#if @custom.imagen_carrusel_3}}
-            <div class="swiper-slide">
-              {{#if @custom.banner_link_url_3}}
-                <a href="{{@custom.banner_link_url_3}}">
-              {{/if}}
+                        <picture>
+                          {{#if @custom.imagen_banner_mobile_3}}
+                            <source
+                              media="(max-width: 767px)"
+                              srcset="{{img_url @custom.imagen_banner_mobile_3 '600x300'}}"
+                            >
+                          {{/if}}
+                          <source
+                            media="(min-width: 768px)"
+                            srcset="{{img_url @custom.imagen_carrusel_3 '1200x400'}}"
+                          >
+                          <img
+                            src="{{img_url @custom.imagen_carrusel_3 '1200x400'}}"
+                            alt="Slide 3"
+                          >
+                        </picture>
 
-                <picture>
-                  {{#if @custom.imagen_banner_mobile}}
-                    <source
-                      media="(max-width: 767px)"
-                      srcset="{{img_url @custom.imagen_banner_mobile '600x300'}}"
-                    >
+                      {{#if @custom.banner_link_url_3}}
+                        </a>
+                      {{/if}}
+                    </div>
                   {{/if}}
-                  <source
-                    media="(min-width: 768px)"
-                    srcset="{{img_url @custom.imagen_carrusel_3 '1200x400'}}"
-                  >
-                  <img
-                    src="{{img_url @custom.imagen_carrusel_3 '1200x400'}}"
-                    alt="Slide 3"
-                  >
-                </picture>
-
-              {{#if @custom.banner_link_url_3}}
-                </a>
-              {{/if}}
-            </div>
+                </div>
+                {{!-- Controles de Swiper --}}
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+            </section>
           {{/if}}
-
-        </div>
-
-        {{!-- Controles de Swiper --}}
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div>
-    </section>
-  {{/if}}
-{{/is}}
+        {{/is}}
         <div class="site-content">
             {{{body}}}
         </div>
-
         <footer class="gh-foot gh-outer">
             <div class="gh-foot-inner gh-inner">
                 <div class="subscribe{{#if is_popup}} popup{{/if}}">
-                    {{#if @custom.apple_podcasts_link}}
-                    <a href="{{@custom.apple_podcasts_link}}" class="subscribe-link" target="_blank"
-                        rel="noopener noreferrer">
-                        {{> "icons/apple"}}
-                        <span class="subscribe-text">Apple</span>
-                    </a>
-                    {{/if}}
-                    {{#if @custom.google_podcasts_link}}
-                    <a href="{{@custom.google_podcasts_link}}" class="subscribe-link" target="_blank"
-                        rel="noopener noreferrer">
-                        {{> "icons/google"}}
-                        <span class="subscribe-text">Google</span>
-                    </a>
-                    {{/if}}
-                    {{#if @custom.spotify_link}}
-                    <a href="{{@custom.spotify_link}}" class="subscribe-link" target="_blank" rel="noopener noreferrer">
-                        {{> "icons/spotify"}}
-                        <span class="subscribe-text">Spotify</span>
-                    </a>
-                    {{/if}}
-                    <a href="{{#if @custom.rss_link}}{{@custom.rss_link}}{{else}}{{@site.url}}/rss{{/if}}"
-                        class="subscribe-link rss" target="_blank" rel="noopener noreferrer">
-                        {{> "icons/rss"}}
-                        <span class="subscribe-text">RSS</span>
-                    </a>
                 </div>
                 <nav class="gh-foot-menu">
                     {{navigation type="secondary"}}
                 </nav>
                 <div class="gh-copyright">
-                    {{@site.title}} © {{date format="YYYY"}}. Powered by <a href="https://ghost.org/" target="_blank"
+                    {{@site.title}} © {{date format="YYYY"}}.Powered by <a href="https://ghost.org/" target="_blank"
                         rel="noopener">Ghost</a>
                 </div>
             </div>
         </footer>
-
         {{^is "post, page"}}
         {{> "player"}}
         {{/is}}
-
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
         </script>
-    <script src="{{asset " built/main.min.js"}}"></script>
-
+    <script src="{{asset "built/main.min.js"}}"></script>
     {{{block "scripts"}}}
 
+    <script src="{{asset "js/swiper-bundle.min.js"}}" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', function () {
+        const swiperEl = document.querySelector('.home-carousel .swiper');
+        if (!swiperEl) return;
+
+        const slideCount = swiperEl.querySelectorAll('.swiper-slide').length;
+
+        new Swiper(swiperEl, {
+          loop: slideCount > 1,
+          pagination: {
+            el: swiperEl.querySelector('.swiper-pagination'),
+            clickable: true
+          },
+          navigation: {
+            nextEl: swiperEl.querySelector('.swiper-button-next'),
+            prevEl: swiperEl.querySelector('.swiper-button-prev')
+          },
+          autoplay: { delay: 5000 }
+        });
+      });
+    </script>
+
+    {{#is "home"}}
+      {{#if @custom.mostrar_alerta}}
+        {{!-- SweetAlert2 CSS (si no lo tienes ya en <head>) --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+        {{!-- SweetAlert2 JS --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            Swal.fire({
+              title: '{{@custom.titulo_de_alerta}}',
+              text:  '{{@custom.texto_de_alerta}}',
+              icon:  '{{@custom.icono_alerta}}',
+              confirmButtonText: 'OK',
+              position: '{{@custom.lugar_alerta}}',
+              width: '{{#if @custom.tamaño_de_la_alerta}}{{@custom.tamaño_de_la_alerta}}{{else}}500px{{/if}}'  // Usando el tamaño personalizado o un valor predeterminado            });
+          });
+          });
+        </script>
+      {{/if}}
+    {{/is}}
     {{ghost_foot}}
-
 </body>
-
-</html> 
+</html>

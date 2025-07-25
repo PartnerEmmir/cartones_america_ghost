@@ -1,4 +1,4 @@
-const {series, parallel, watch, src, dest} = require('gulp');
+const { series, parallel, watch, src, dest } = require('gulp');
 const pump = require('pump');
 const fs = require('fs');
 const order = require('ordered-read-streams');
@@ -15,6 +15,51 @@ const zip = require('gulp-zip');
 const easyimport = require('postcss-easy-import');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const rename = require('gulp-rename');
+
+
+// Tarea para SweetAlert CSS
+function sweetalertCss(done) {
+    pump([
+        src('node_modules/sweetalert2/dist/sweetalert2.min.css'),
+        dest('assets/css'),
+        livereload()
+    ], handleError(done));
+}
+
+// Tarea para SweetAlert JS
+function sweetalertJs(done) {
+    pump([
+        src('node_modules/sweetalert2/dist/sweetalert2.min.js'),
+        dest('assets/js'),
+        livereload()
+    ], handleError(done));
+}
+
+// Incluye estas tareas antes de css/js en build
+
+
+/**
+ * Tarea para copiar el CSS de Swiper a assets/css
+ */
+function swiperCss(done) {
+    pump([
+        src('node_modules/swiper/swiper-bundle.min.css'),
+        dest('assets/css'),
+        livereload()
+    ], handleError(done));
+}
+
+/**
+ * Tarea para copiar el JS de Swiper a assets/js
+ */
+function swiperJs(done) {
+    pump([
+        src('node_modules/swiper/swiper-bundle.min.js'),
+        dest('assets/js'),
+        livereload()
+    ], handleError(done));
+}
 
 function serve(done) {
     livereload.listen();
@@ -39,19 +84,21 @@ function hbs(done) {
 
 function css(done) {
     pump([
-        src('assets/css/screen.css', {sourcemaps: true}),
+        // Incluye primero tu CSS base junto con el CSS de Swiper ya copiado en assets/css
+        src(['assets/css/screen.css', 'assets/css/swiper-bundle.min.css'], { sourcemaps: true }),
         postcss([
             easyimport,
             autoprefixer(),
             cssnano()
         ]),
-        dest('assets/built/', {sourcemaps: '.'}),
+        dest('assets/built/', { sourcemaps: '.' }),
         livereload()
     ], handleError(done));
 }
 
 function getJsFiles(version) {
     const jsFiles = [
+        src('assets/js/swiper-bundle.min.js'),
         src(`node_modules/@tryghost/shared-theme-assets/assets/js/${version}/lib/**/*.js`),
         src(`node_modules/@tryghost/shared-theme-assets/assets/js/${version}/main.js`),
     ];
@@ -67,10 +114,10 @@ function getJsFiles(version) {
 
 function js(done) {
     pump([
-        order(getJsFiles('v1'), {sourcemaps: true}),
+        order(getJsFiles('v1'), { sourcemaps: true }),
         concat('main.min.js'),
         uglify(),
-        dest('assets/built/', {sourcemaps: '.'}),
+        dest('assets/built/', { sourcemaps: '.' }),
         livereload()
     ], handleError(done));
 }
@@ -94,7 +141,9 @@ const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs);
 const cssWatcher = () => watch('assets/css/**/*.css', css);
 const jsWatcher = () => watch('assets/js/**/*.js', js);
 const watcher = parallel(hbsWatcher, cssWatcher, jsWatcher);
-const build = series(css, js);
+
+// Ahora incluimos swiperCss y swiperJs en tu build
+const build = series(swiperCss, swiperJs, sweetalertCss, sweetalertJs, css, js);
 
 exports.build = build;
 exports.zip = series(build, zipper);

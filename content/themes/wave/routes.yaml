@@ -3,16 +3,13 @@ routes:
     template: rss
     content_type: text/xml
 
-collections:
   /:
-    permalink: /{slug}/
-    template: index
-    filter: tag:-blog
+    template: landing
+
+collections:
   /blog/:
     permalink: /blog/{slug}/
-    template: blog
-    filter: tag:blog
-    data: tag.blog
+    template: index
 
 taxonomies:
   tag: /tag/{slug}/

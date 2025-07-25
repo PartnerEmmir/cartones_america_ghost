@@ -1,13 +1,19 @@
 {{!< default}}
 
 <div class="gh-outer">
-<main class="site-main gh-inner">
+  <main class="site-main gh-inner">
+
+    <header class="post-list-header">
+      <h1>Blog</h1>
+      <p>Últimos artículos y novedades</p>
+    </header>
 
     <div class="post-feed gh-feed">
-        {{#foreach posts}}
-            {{> "loop"}}
-        {{/foreach}}
+      {{#foreach posts}}
+        {{> "loop"}}
+      {{/foreach}}
     </div>
 
-</main>
+    {{pagination}}
+  </main>
 </div>
