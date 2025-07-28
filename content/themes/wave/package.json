@@ -147,19 +147,34 @@
             },
             "icono_alerta": {
                 "type": "select",
-                "options": ["success","info","warning","error"],
+                "options": [
+                    "success",
+                    "info",
+                    "warning",
+                    "error"
+                ],
                 "group": "Landing Page",
                 "default": "info",
                 "help": "Icono de la alerta"
             },
             "lugar_alerta": {
                 "type": "select",
-                "options": ["top-end", "top-start", "top", "bottom-end", "bottom-start", "bottom","center", "center-start", "center-end"],
+                "options": [
+                    "top-end",
+                    "top-start",
+                    "top",
+                    "bottom-end",
+                    "bottom-start",
+                    "bottom",
+                    "center",
+                    "center-start",
+                    "center-end"
+                ],
                 "group": "Landing Page",
                 "default": "top-end",
                 "help": "Es el lugar donde se mostrará la alerta"
             },
-            "tamaño_de_la_alerta": {
+            "tamano_de_la_alerta": {
                 "type": "text",
                 "group": "Landing Page",
                 "default": "500px",

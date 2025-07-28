@@ -1,0 +1,80 @@
+/* Estilos para la página de prueba */
+.test-page {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el encabezado */
+.page-header {
+    background-color: #007bff;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.page-header .main-title {
+    font-size: 36px;
+    margin: 0;
+}
+
+.page-header .sub-title {
+    font-size: 18px;
+    margin: 10px 0 0;
+}
+
+/* Estilos para las secciones */
+.page-content {
+    padding: 40px 0;
+    background-color: #ffffff;
+}
+
+.section-introduction h2,
+.section-services h2 {
+    font-size: 30px;
+    color: #333;
+}
+
+.section-introduction p,
+.section-services p {
+    font-size: 16px;
+    color: #555;
+}
+
+.services-list {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    list-style-type: none;
+}
+
+.service-item {
+    width: 30%;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service-item h3 {
+    font-size: 22px;
+    color: #007bff;
+}
+
+.service-item p {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Estilos para el pie de página */
+.page-footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.page-footer p {
+    margin: 0;
+}

@@ -4,7 +4,10 @@ routes:
     content_type: text/xml
 
   /:
-    template: landing
+    template: landing  # Página de inicio
+
+  /test-prueba/:
+    template: test_prueba  # Ruta para la nueva página
 
 collections:
   /blog/:

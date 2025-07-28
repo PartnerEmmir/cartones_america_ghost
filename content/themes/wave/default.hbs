@@ -80,7 +80,6 @@
             <section class="home-carousel">
               <div class="swiper">
                 <div class="swiper-wrapper">
-
                   {{!-- Slide 1 --}}
                   {{#if @custom.imagen_carrusel_1}}
                     <div class="swiper-slide">
@@ -90,7 +89,6 @@
                       {{else if @custom.banner_link_url_1}}
                         <a href="{{@custom.banner_link_url_1}}">
                       {{/if}}
-
                         <picture>
                           {{#if @custom.imagen_banner_mobile_1}}
                             <source
@@ -254,7 +252,7 @@
               icon:  '{{@custom.icono_alerta}}',
               confirmButtonText: 'OK',
               position: '{{@custom.lugar_alerta}}',
-              width: '{{#if @custom.tamaño_de_la_alerta}}{{@custom.tamaño_de_la_alerta}}{{else}}500px{{/if}}'  // Usando el tamaño personalizado o un valor predeterminado            });
+              width: '{{#if @custom.tamano_de_la_alerta}}{{@custom.tamano_de_la_alerta}}{{else}}500px{{/if}}'  // Usando el tamaño personalizado o un valor predeterminado            });
           });
           });
         </script>

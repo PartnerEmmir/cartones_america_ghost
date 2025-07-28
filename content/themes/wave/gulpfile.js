@@ -38,7 +38,6 @@ function sweetalertJs(done) {
 
 // Incluye estas tareas antes de css/js en build
 
-
 /**
  * Tarea para copiar el CSS de Swiper a assets/css
  */
@@ -63,6 +62,11 @@ function swiperJs(done) {
 
 function serve(done) {
     livereload.listen();
+    done();
+}
+
+function clean(done) {
+    // Esta seria la tarea de limpieza, si es necesaria
     done();
 }
 

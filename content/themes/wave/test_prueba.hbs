@@ -1,0 +1,61 @@
+{{!< default}} <head>
+    <title>{{meta_title}}</title>
+
+    {{#is "test-prueba"}}
+    <!-- Solo carga este archivo CSS en la página test-prueba -->
+    <link rel="stylesheet" href="{{asset "css/site/test_prueba.css"}}">
+    {{/is}}
+    </head>
+
+    <body class="test-page">
+        <header class="page-header">
+            <div class="container">
+                <h1 class="main-title">Página de Prueba</h1>
+                <p class="sub-title">Una página personalizada con un diseño básico.</p>
+            </div>
+        </header>
+
+        <main class="page-content">
+            <section class="section-introduction">
+                <div class="container">
+                    <h2>Bienvenido a la prueba de página</h2>
+                    <p>
+                        Esta es una página de prueba donde puedes ver cómo puedes personalizar tu sitio de Ghost.
+                        Aquí se muestra un ejemplo de un diseño básico.
+                    </p>
+                    <p>Puedes editar estos textos desde el panel de administración de Ghost, personalizándolos a tu
+                        gusto.</p>
+                </div>
+            </section>
+
+            <section class="section-services">
+                <div class="container">
+                    <h2>Nuestros Servicios</h2>
+                    <ul class="services-list">
+                        <li class="service-item">
+                            <h3>Servicio 1</h3>
+                            <p>Descripción breve del primer servicio.</p>
+                        </li>
+                        <li class="service-item">
+                            <h3>Servicio 2</h3>
+                            <p>Descripción breve del segundo servicio.</p>
+                        </li>
+                        <li class="service-item">
+                            <h3>Servicio 3</h3>
+                            <p>Descripción breve del tercer servicio.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <div class="container">
+                <p>&copy; {{date format="YYYY"}} Tu Empresa. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+        {{ghost_foot}}
+    </body>
+
+    </html>
